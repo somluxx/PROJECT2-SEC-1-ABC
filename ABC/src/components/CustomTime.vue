@@ -8,8 +8,6 @@ const emitsClick = () => { // define fucnion onClick button
     // emits values in object term, when user clicked the button a values will emits to parent component (App.vue)
     emits('customizedTime',{min:custom_min.value,sec:custom_sec.value})
 }
-
-
 </script>
  
 <template>

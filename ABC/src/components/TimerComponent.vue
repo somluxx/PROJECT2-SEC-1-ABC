@@ -1,7 +1,9 @@
 <script setup>
 import { ref, computed, defineProps, watch } from "vue";
 import alert from "/alert.mp3"
+import ThatThongSound from '/ThatThongSound.mp3'
 const audio = new Audio(alert)
+const thatThongSound = new Audio(ThatThongSound)
 const showModal = ref(false);
 const showModalStyle = 'block visible';
 const collapseModalStyle = 'hidden';
@@ -27,8 +29,6 @@ const minutes = computed(() => {
 const seconds = computed(() => {
   return Math.floor(pomodoroDefaultTimer.value % 60); // Calculate Seconds (Use Remainder)
 });
-// console.log(`Minutes Props: ${props.minutes}`)
-// console.log(`Seconds Props: ${props.seconds}`)
 
 //Overall Countdown Timer System Function
 const countDownSystem = () => {
@@ -39,7 +39,7 @@ const countDownSystem = () => {
         pomodoroDefaultTimer.value--; // if time is not reach 0 sec, decreasing the time
       } else {
         clearInterval(intervalId); //if reachs 0, clearInterval (Stop)
-        audio.play() // play an audio
+        thatThongSound.play() // play an audio
         showModal.value = true; // set modal boolean to true, text time's up will dislpay
       }
     }, 1000); // specify interval time in ms
@@ -64,7 +64,7 @@ const resetTimer = () => {
   pomodoroDefaultTimer.value = defaultPomodoroTime; //define timer to initial time when timer reachs 00:00
   showModal.value = false; //set showModal to false to hide time's up text when restart the timer
   startBtnText.value = false // make the startbtn text to 'Start' again instead of 'Pause'
-  audio.pause() // pause an audio
+  thatThongSound.pause() // pause an audio
 };
 resetTimer(); // execute resetTimer function
 </script>
@@ -102,7 +102,7 @@ resetTimer(); // execute resetTimer function
       <div class="alert alert-info shadow-lg w-96">
       <div>
         <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" class="stroke-current flex-shrink-0 w-6 h-6"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
-          <span>Session has Ended ! Time to take a break :3</span>
+          <span>ไม่มีหรอกเวลาพัก มีแต่เวลาแดนซ์ซ์ซ์</span>
   </div>
 </div>
       <button @click="resetTimer" class="flex border-2 border-red-300 rounded-xl p-3 m-2 justify-center text-center">Restart</button>
