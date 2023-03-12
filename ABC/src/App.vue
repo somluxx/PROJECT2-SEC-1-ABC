@@ -1,10 +1,12 @@
 <script setup>
+import FirstPage from './components/FirstPage.vue';
 import TimeDisplay from './components/TimeDisplay.vue';
 </script>
 
 <template>
   <div class="w-screen h-screen ">
-    <TimeDisplay/>
+    <FirstPage/>
+    <!-- <TimeDisplay/> -->
   </div>
 </template>
 
