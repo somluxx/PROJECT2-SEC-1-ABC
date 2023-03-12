@@ -1,5 +1,8 @@
 <script setup>
+    import { ref } from 'vue';
     const tomato = 'images/tomatoman.png'
+    const emits = defineEmits(['nextPage'])
+    
 </script>
  
 <template>
@@ -16,7 +19,7 @@
         </div>
         <div class="w-full "> 
             <div class="flex justify-center">
-            <button class="bg-red-600 rounded-xl w-72 h-32 text-white text-5xl font-semibold" >ENTER</button>
+            <button class="bg-red-600 rounded-xl w-72 h-32 text-white text-5xl font-semibold" @click="$emit('nextPage',true)">ENTER</button>
             </div>
             <div class="flex justify-end">
             <h1 class="text-5xl font-normal text-white font-sans tracking-widest p-5">by ABC group</h1> 
