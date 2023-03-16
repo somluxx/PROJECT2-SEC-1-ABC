@@ -21,13 +21,14 @@ const props = defineProps({ // define props minutes and seconds for binding prop
   }
 });
 const startBtnText = ref(false); // make text button show "Start"
-const pomodoroDefaultTimer = ref(props.minutes * 60  + props.seconds); // DefaultPomodoroTimer will refers by props value which is valued by user in App.vue page (Passing props), this will stored timer in 'SECONDS' unit
+const pomodoroDefaultTimer = ref(props.minutes * 60  + props.seconds); // DefaultPomodoroTimer will refers by props value which is passed by user in App.vue page (Passing props), this will stored timer in 'SECONDS' unit e.g) 25 Minutes is ((25*60) + 0) = 1500, a pomodoroDefaultTimer will keep 1500 to calculate and display in Minutes and Seconds in computed function below.
+
 const defaultPomodoroTime = props.minutes * 60 + props.seconds; // Duplicate define defaultPomodoroTimer for specific purpose (Reset Timer)
 const minutes = computed(() => {
-  return Math.floor(pomodoroDefaultTimer.value / 60); // Calculate Minutes (Use Integer)
+  return Math.floor(pomodoroDefaultTimer.value / 60); // Calculate Minutes (Use Integer) e.g) 1500 Secs = 25 Mins it will be like 1500/60 and use integer as a value.
 });
 const seconds = computed(() => {
-  return Math.floor(pomodoroDefaultTimer.value % 60); // Calculate Seconds (Use Remainder)
+  return Math.floor(pomodoroDefaultTimer.value % 60); // Calculate Seconds (Use Remainder) e.g) 1500 Secs = 25 Mins it will be like 1500/60 and use remainder as a value.
 });
 
 //Overall Countdown Timer System Function
