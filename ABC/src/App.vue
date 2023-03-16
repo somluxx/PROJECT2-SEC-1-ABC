@@ -1,47 +1,48 @@
+
 <script setup>
-import HelloWorld from './components/HelloWorld.vue'
-import TheWelcome from './components/TheWelcome.vue'
+// หน้าเเรก
+import FirstPage from './components/FirstPage.vue';
+import TimeDisplay from './components/TimeDisplay.vue';
+
+// // เวลา
+// import TimerComponent from './components/TimerComponent.vue';
+// import CustomTime from './components/CustomTime.vue';
+import { ref,onMounted } from 'vue';
+// // เวลา
+// const customized_min = ref(25) // initial minutes
+// const customized_sec = ref(0) // initial seconds
+
+// หน้าเเรก
+const closeFirstPage = ref(true)
+const showTimeDisplayPage = ref(false)
+
+// หน้าเเรก
+const goNextPage = (x) => {
+  if(x === true){
+    closeFirstPage.value = !closeFirstPage.value
+    showTimeDisplayPage.value = !showTimeDisplayPage.value
+  }
+}
+
+// // เวลา
+// const timeSelected = (data) =>{
+//     console.log(`Min:${data.min},Sec:${data.sec}`)
+//         customized_min.value = data.min
+//         customized_sec.value = data.sec
+    
+// }
+// onMounted(()=>{
+//     document.title = "Tomadoro Timer"
+// })
+
 </script>
 
 <template>
-  <header>
-    <img alt="Vue logo" class="logo" src="./assets/logo.svg" width="125" height="125" />
-
-    <div class="wrapper">
-      <HelloWorld msg="You did it!" />
-    </div>
-  </header>
-
-  <main>
-    <TheWelcome />
-  </main>
+  <div class="w-screen h-screen ">
+      <FirstPage @nextPage="goNextPage" v-show="closeFirstPage"/>
+      <TimeDisplay v-show="showTimeDisplayPage"/>
+  </div>
 </template>
 
 <style scoped>
-header {
-  line-height: 1.5;
-}
-
-.logo {
-  display: block;
-  margin: 0 auto 2rem;
-}
-
-@media (min-width: 1024px) {
-  header {
-    display: flex;
-    place-items: center;
-    padding-right: calc(var(--section-gap) / 2);
-  }
-
-  .logo {
-    margin: 0 2rem 0 0;
-  }
-
-  header .wrapper {
-    display: flex;
-    place-items: flex-start;
-    flex-wrap: wrap;
-  }
-}
 </style>
