@@ -1,84 +1,118 @@
+<script type="module">
+
+  export default {
+  data() {
+    return {
+      tasks: [],
+      showAddTaskPopup: false,
+      showAllTasksPopup: false, 
+      newTaskName: "",
+    }
+  },
+  computed: {
+    taskCount() {
+      return this.tasks.length
+    },
+  },
+  methods: {
+    addTask() {
+      if (this.newTaskName.trim() === "") {
+        return;
+      }
+      this.tasks.push(this.newTaskName.trim())
+      this.showAddTaskPopup = false
+      this.newTaskName = ""
+    },
+    toggleShowAllTasksPopup() { 
+        this.showAllTasksPopup = !this.showAllTasksPopup;
+      },
+      toggleCompleted(index) {
+        this.tasks[index].completed = !this.tasks[index].completed;
+      },
+  },
+}
+  
+</script>
+
 <template>
-  <div class="w-1/2 flex items-center justify-center flex-col">
-    <h1 class="text-5xl font-bold mb-12 text-white">Todo List</h1>
+   <div class="bg-red-500 h-screen flex flex-row items-center justify-center">
+    <div class="w-1/2 h-screen border-r border-black flex flex-col items-center justify-center">
+      <div class="bg-red-400 text-white text-9xl font-bold rounded-lg p-4 mb-9">22:46</div>
+      
+      <div class="mt-2">
+          <button class="bg-white text-5xl text-red-500 py-2 px-4 rounded-lg"
+                  @click="toggleTimer">
+            {{ isTimerRunning ? 'Start' : 'Pause'}}
+          </button>
+      </div>    
+    </div>
 
-    <div v-show="listOpen" class="border p-4 mb-4 text-white">
-      <ul class="pl-2 mb-10">
-        <li
-          v-for="(item, index) in todoList"
-          :key="index"
-          class="mb-2 text-3xl"
-        >
-          <span :class="{ 'line-through  ': item.completed }">
-            {{ item.task }}
-          </span>
-          <input type="checkbox" v-model="item.completed" class="ml-4" />
-        </li>
-      </ul>
 
-      <div class="mt-4">
-        <label class="block text-white font-bold mb-4 text-3xl" for="task">
-          Add a new task:
-        </label>
-        <input
-          v-model="newTask"
-          class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 focus:outline-none focus:shadow-outline text-2xl"
-          id="task"
-          type="text"
-          placeholder="Enter new task"
-        />
-        <button
-          @click="addTask"
-          class="mt-4 bg-white hover:bg-red-700 text-red-400 font-bold py-2 px-4 rounded text-2xl"
-        >
-          + Add
-        </button>
+
+    
+
+
+    <div class="w-1/2 h-screen border-r flex items-center justify-center">
+      <div class="flex-col items-center justify-center">
+      <h1 class="text-white text-5xl mb-4">My To-Do Lists</h1>
+      <div class="flex flex-col items-center justify-center">
+      <button @click="toggleShowAllTasksPopup()" class="py-2 px-4 bg-gray-500 text-gray-200 font-semibold rounded-lg shadow-md hover:bg-white focus:outline-none">
+          Expand
+      </button>
+      </div>
+      <div v-if="showAllTasksPopup">
+        <div class="fixed inset-0 bg-gray-500 bg-opacity-50 flex justify-center items-center">
+          <div class="bg-white rounded-lg p-6">
+            <h3 class="text-lg font-medium mb-4">All Tasks</h3>
+            <ul class="list-disc">
+              <li v-for="(task, index) in tasks" :key="index" class="text-black text-xl">
+                {{ task }}
+              </li>
+            </ul>
+            <div class="flex justify-end mt-4">
+              <button type="button" class="bg-gray-500 hover:bg-gray-600 text-white py-2 px-4 rounded mr-2" @click="showAllTasksPopup = false">
+                 Cancel
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+    
+    <ul class="list-disc">
+      <li v-for="(task, index) in tasks" :key="index" class="text-white text-xl">
+        {{ task }} <input type="checkbox" @click="toggleCompleted(index)" :checked="task.completed" class="ml-4">
+      </li>
+    </ul>
+    <div class="flex flex-col items-center justify-center">
+    <button @click="showAddTaskPopup = true" class="absolute hover:text-red-200 text-white text-3xl mt-20 ml-20">
+        +Add
+      </button>
+    </div>  
+
+    <div v-if="showAddTaskPopup">
+      <div class="fixed inset-0 bg-gray-500 bg-opacity-50 flex justify-center items-center">
+        <div class="bg-white rounded-lg p-6">
+          <h3 class="text-lg font-medium mb-4">Add Task</h3>
+          <form @submit.prevent="addTask">
+            <input v-model="newTaskName" type="text" placeholder="Task Name" class="border rounded-lg px-2 py-1 w-full mb-4">
+            <div class="flex justify-end">
+              <button type="button" class="bg-gray-500 hover:bg-gray-600 text-white py-2 px-4 rounded mr-2" @click="showAddTaskPopup = false">
+                Cancel
+              </button>
+              <button type="submit" class="bg-green-500 hover:bg-green-600 text-white py-2 px-4 rounded">
+                OK
+              </button>
+            </div>
+          </form>
+        </div>
       </div>
     </div>
-
-    <div class="flex justify-between items-center mb-4">
-      <button
-        @click="toggleList"
-        class="bg-white hover:bg-red-700 text-red-400 font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline text-3xl"
-      >
-        {{ isListOpen ? "Hide" : "Expand" }}
-      </button>
-    </div>
+  </div>
+  </div> 
   </div>
 </template>
 
-<script>
-import { ref } from "vue";
+<style scoped>
 
-export default {
-  setup() {
-    const listOpen = ref(false);
-    const newTask = ref("");
-    const todoList = ref([
-      { task: "Excercise", completed: false },
-      { task: "Sleep", completed: true },
-      { task: "Wowza", completed: false },
-    ]);
-
-    function toggleList() {
-      listOpen.value = !listOpen.value;
-    }
-
-    function addTask() {
-      if (newTask.value.trim() === "") {
-        return;
-      }
-      todoList.value.push({ task: newTask.value.trim(), completed: false });
-      newTask.value = "";
-    }
-
-    return {
-      listOpen,
-      newTask,
-      todoList,
-      toggleList,
-      addTask,
-    };
-  },
-};
-</script>
+</style>
