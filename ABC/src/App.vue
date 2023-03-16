@@ -3,25 +3,22 @@ import FirstPage from './components/FirstPage.vue';
 import TimeDisplay from './components/TimeDisplay.vue';
 import { ref } from 'vue';
 
-let showPage = ref(false)
+const closeFirstPage = ref(true)
+const showTimeDisplayPage = ref(false)
 
 const goNextPage = (x) => {
-  showPage.value = x
-
+  if(x === true){
+    closeFirstPage.value = !closeFirstPage.value
+    showTimeDisplayPage.value = !showTimeDisplayPage.value
+  }
 }
 
 </script>
 
 <template>
   <div class="w-screen h-screen ">
-
-    <div :style="[showPage ?  {'display': 'none'} : {'width': '100vw'}]">
-      <FirstPage @nextPage="goNextPage"/>
-    </div>
-
-    <div :style="[showPage ? {'width': '100vw'} : {'display': 'none'} ]">
-      <TimeDisplay />
-    </div>
+      <FirstPage @nextPage="goNextPage" v-show="closeFirstPage"/>
+      <TimeDisplay v-show="showTimeDisplayPage"/>
   </div>
 </template>
 

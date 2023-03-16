@@ -2,7 +2,7 @@
 import { ref, reactive } from 'vue';
 const tomato = 'images/tomatoman.png'
 const gearimage = 'images/gear.png'
-const box = reactive([100])
+const box = reactive([25])
 
 const showpomodoro = (e) => {
     if(e.target.value === 'pomo'){
@@ -27,6 +27,36 @@ const showpomodoro = (e) => {
 //     }
 // })
 // const displayChangetoTimePage = ref(props.changetoTimePage)
+
+const timedisplay = () =>{
+    if(box[0] !== 0){
+    let timestop = setInterval(() => {
+        box[0] = box[0] - 1 
+    
+        if(box[0] <= 0){
+        clearInterval(timestop)
+        }
+    },1000)
+    }
+    else{
+        alert('1234')
+    }
+}
+
+const startTime = () => {
+    timedisplay()
+}
+// let datetest = new Date(2003, 4 , 27 , 0 , box[0], 0, 0)
+// let datedefault = new Date(2003, 4 , 27 , 0 , 0, 0, 0)
+// console.log(datetest.getTime())
+// console.log(datedefault.getTime())
+// let x = datetest.getTime() - datedefault.getTime()
+// let y = datetest.getTime() - 1000 * 60 
+// console.log(y)
+// console.log(x) 
+// let twetyfivemin = 1000 * 60 * 25
+// console.log(twetyfivemin)
+
 </script>
  
 <template>
@@ -43,13 +73,13 @@ const showpomodoro = (e) => {
         </div>
     </div>
     <div class="flex-col justify-center">
-        <h1 class="text-9xl font-bold text-white flex justify-center">{{ box[0] }}</h1>
+        <h1 class="text-9xl font-bold text-white flex justify-center">{{ box[0] }} : 00</h1>
         <div class="flex justify-end">
             <button class="bg-red-300 rounded-xl w-64 h-24 text-white text-6xl font-bold pr-24">Task</button>
         </div>
 
         <div class="w-full flex justify-center pt-20">
-        <button class="bg-white rounded-xl w-64 h-32 text-red-400 text-6xl font-bold tracking-wider"> 
+        <button class="bg-white rounded-xl w-64 h-32 text-red-400 text-6xl font-bold tracking-wider" @click="startTime"> 
             START
         </button>
         </div>
