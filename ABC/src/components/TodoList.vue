@@ -1,37 +1,31 @@
-<script type="module">
+<script setup>
+import { ref } from 'vue';
 
-  export default {
-  data() {
-    return {
-      tasks: [],
-      showAddTaskPopup: false,
-      showAllTasksPopup: false, 
-      newTaskName: "",
-    }
-  },
-  computed: {
-    taskCount() {
-      return this.tasks.length
-    },
-  },
-  methods: {
-    addTask() {
-      if (this.newTaskName.trim() === "") {
-        return;
-      }
-      this.tasks.push(this.newTaskName.trim())
-      this.showAddTaskPopup = false
-      this.newTaskName = ""
-    },
-    toggleShowAllTasksPopup() { 
-        this.showAllTasksPopup = !this.showAllTasksPopup;
-      },
-      toggleCompleted(index) {
-        this.tasks[index].completed = !this.tasks[index].completed;
-      },
-  },
+const tasks = ref([]);
+const showAddTaskPopup = ref(false);
+const showAllTasksPopup = ref(false);
+const newTaskName = ref("");
+
+const taskCount = computed(() => {
+  return tasks.value.length;
+});
+
+function addTask() {
+  if (newTaskName.value.trim() === "") {
+    return;
+  }
+  tasks.value.push(newTaskName.value.trim());
+  showAddTaskPopup.value = false;
+  newTaskName.value = "";
 }
-  
+
+function toggleShowAllTasksPopup() { 
+  showAllTasksPopup.value = !showAllTasksPopup.value;
+}
+
+function toggleCompleted(index) {
+  tasks.value[index].completed = !tasks.value[index].completed;
+}
 </script>
 
 <template>

@@ -8,6 +8,7 @@ import TimeDisplay from './components/TimeDisplay.vue';
 // import TimerComponent from './components/TimerComponent.vue';
 // import CustomTime from './components/CustomTime.vue';
 import { ref,onMounted } from 'vue';
+import TodoList from './components/TodoList.vue';
 // // เวลา
 // const customized_min = ref(25) // initial minutes
 // const customized_sec = ref(0) // initial seconds
@@ -41,6 +42,7 @@ const goNextPage = (x) => {
   <div class="w-screen h-screen ">
       <FirstPage @nextPage="goNextPage" v-show="closeFirstPage"/>
       <TimeDisplay v-show="showTimeDisplayPage"/>
+      
   </div>
 </template>
 
