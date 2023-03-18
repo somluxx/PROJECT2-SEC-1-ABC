@@ -43,6 +43,7 @@ const goNextPage = (x) => {
       <FirstPage @nextPage="goNextPage" v-show="closeFirstPage"/>
       <TimeDisplay v-show="showTimeDisplayPage"/>
       
+      
   </div>
 </template>
 

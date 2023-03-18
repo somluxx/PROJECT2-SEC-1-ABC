@@ -1,5 +1,5 @@
 <template>
-  <div class="w-1/2 flex items-center justify-center flex-col">
+  <div class="w-1/4 flex items-center justify-center flex-col ">
     <h1 class="text-5xl font-bold mb-12 text-white">Todo List</h1>
 
     <div v-show="listOpen" class="border p-4 mb-4 text-white">

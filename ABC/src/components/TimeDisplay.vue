@@ -4,7 +4,7 @@ import { ref, reactive } from "vue";
 // // เวลา
 import TimerComponent from "../components/TimerComponent.vue";
 import CustomTime from "../components/CustomTime.vue";
-import TodoList from "../components/TodoList.vue";
+import TodoListNotUse from "../components/TodoListNotUse.vue";
 // // เวลา
 const customized_min = ref(25); // initial minutes
 const customized_sec = ref(0); // initial seconds
@@ -81,18 +81,26 @@ const startTime = () => {
 // let twetyfivemin = 1000 * 60 * 25
 // console.log(twetyfivemin)
 
-
-
+const showTodoList = ref(false);
 </script>
 
-<template v-if="showTodoList">
-<TodoList />
+<template>
+    
   <div class="w-screen h-screen">
+    
+    
     <div class="w-full h-4/5 bg-red-400 p-2">
+        
+        <div v-show="showTodoList" class="absolute left-52 ">
+      <TodoListNotUse />
+    </div>
       <div class="w-full flex pb-5">
         <div class="w-1/2">
+            
           <img :src="tomato" class="w-20" />
+          
         </div>
+        
         <div class="w-1/2">
           <div class="flex justify-end pt-2">
             <button
@@ -102,8 +110,12 @@ const startTime = () => {
             </button>
           </div>
         </div>
+        
       </div>
       <div class="flex-col justify-center">
+        
+       
+        
         <!-- <h1 class="text-9xl font-bold text-white flex justify-center">{{ box[0] }} : 00</h1>
         <div class="flex justify-end">
             <button class="bg-red-300 rounded-xl w-64 h-24 text-white text-6xl font-bold pr-24">Task</button>
@@ -116,46 +128,78 @@ const startTime = () => {
         </div> -->
 
         <div>
-    <p class="text-center mt-4 text-xl font-bold text-white">Timer Component</p>
-    <div class="flex justify-center">
-      <div>
-        <TimerComponent :minutes="customized_min" :seconds="customized_sec"></TimerComponent>
-        <div class="flex justify-center mt-5">
-          <p class="font-bold text-xl text-white text-center ">Customize Component</p>
+          <p class="text-center mt-4 text-xl font-bold text-white">
+            Timer Component
+          </p>
+          <div class="flex justify-center">
+            
+            <div>
+              <TimerComponent
+                :minutes="customized_min"
+                :seconds="customized_sec"
+              ></TimerComponent>
+              <div class="flex justify-center mt-5">
+                <p class="font-bold text-xl text-white text-center">
+                  Customize Component
+                </p>
+              </div>
+              <CustomTime @customizedTime="timeSelected" class="mt-5" />
+            </div>
+          </div>
+
+          
+            <div class="flex justify-end">
+                
+              <button
+                class="bg-red-300 rounded-xl w-64 h-24 text-white text-6xl font-bold pr-24"
+                @click="showTodoList = !showTodoList"
+              >
+                Task
+              </button>
+              
+             
+
+            </div>
+            
+            
+          
+
+          <p class="flex justify-center mt-10">
+            Disclaimer: All alert sounds featured in this Web Application are
+            sourced from Windows 11 Media, which is owned by &copy; Microsoft
+            Corporation.
+          </p>
         </div>
-        <CustomTime @customizedTime="timeSelected" class="mt-5" />
       </div>
       
-    </div>
-    <div class="flex justify-end">
-           <button class="bg-red-300 rounded-xl w-64 h-24 text-white text-6xl font-bold pr-24">Task</button>
-       </div>
-
-    <p class="flex justify-center mt-10">Disclaimer: All alert sounds featured in this Web Application are sourced from Windows 11 Media, which is owned by &copy; Microsoft Corporation.</p>
-  </div>
-
-  
-      </div>
     </div>
     
-       
-       
-      
 
-      
     <div class="w-full h-1/5 bg-gray-800 p-10">
-  <div class="flex justify-center space-x-7">
-    <button class="bg-red-400 rounded-xl w-64 h-24 text-white text-4xl font-semibold" @click="customized_min = 25" value="">
-      Pomodoro
-    </button>
-    <button class="bg-green-400 rounded-xl w-64 h-24 text-white text-4xl font-semibold" @click="customized_min = 10" value="">
-      Short-break
-    </button>
-    <button class="bg-green-600 rounded-xl w-64 h-24 text-white text-4xl font-semibold" @click="customized_min = 5" value="">
-      Long-break
-    </button>
-  </div>
-</div>
+      <div class="flex justify-center space-x-7">
+        <button
+          class="bg-red-400 rounded-xl w-64 h-24 text-white text-4xl font-semibold"
+          @click="customized_min = 25"
+          value=""
+        >
+          Pomodoro
+        </button>
+        <button
+          class="bg-green-400 rounded-xl w-64 h-24 text-white text-4xl font-semibold"
+          @click="customized_min = 5"
+          value=""
+        >
+          Short-break
+        </button>
+        <button
+          class="bg-green-600 rounded-xl w-64 h-24 text-white text-4xl font-semibold"
+          @click="customized_min = 10"
+          value=""
+        >
+          Long-break
+        </button>
+      </div>
+    </div>
   </div>
 </template>
 

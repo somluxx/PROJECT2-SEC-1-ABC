@@ -1,22 +1,20 @@
 <script setup>
-import { ref } from 'vue';
+import { ref } from 'vue'
 
-const tasks = ref([]);
-const showAddTaskPopup = ref(false);
-const showAllTasksPopup = ref(false);
-const newTaskName = ref("");
+const tasks = ref([])
+const showAddTaskPopup = ref(false)
+const showAllTasksPopup = ref(false)
+const newTaskName = ref("")
 
-const taskCount = computed(() => {
-  return tasks.value.length;
-});
+const taskCount = computed(() => tasks.value.length)
 
 function addTask() {
   if (newTaskName.value.trim() === "") {
     return;
   }
-  tasks.value.push(newTaskName.value.trim());
-  showAddTaskPopup.value = false;
-  newTaskName.value = "";
+  tasks.value.push(newTaskName.value.trim())
+  showAddTaskPopup.value = false
+  newTaskName.value = ""
 }
 
 function toggleShowAllTasksPopup() { 
