@@ -12,37 +12,44 @@ import TodoList from './components/TodoList.vue'
 
 
 // ตัวเเปรในการใช้ v-show 
-const closeFirstPage = ref(true)
+const showFirstPage = ref(true)
 const showTimeDisplayPage = ref(false)
-const openTodoListPage = ref(false)
+const showTodoListPage = ref(false)
 
 // function ที่ทำให้หน้าเเรกกับหน้าสองนั้นเชื่อมโยงกัน
 const goNextPage = (x) => {
   if(x === true){
-    closeFirstPage.value = !closeFirstPage.value
+    showFirstPage.value = !showFirstPage.value
     showTimeDisplayPage.value = !showTimeDisplayPage.value
   }
 }
 
-const openTodoList = (x) => {
+const goTodoList = (x) => {
   if(x === true){
     showTimeDisplayPage.value = !showTimeDisplayPage.value
-    openTodoListPage.value = !openTodoListPage.value
+    showTodoListPage.value = !showTodoListPage.value
+  }
+}
+
+const backFirstpage = (x) => {
+  if(x === true){
+    showTimeDisplayPage.value = !showTimeDisplayPage.value
+    showFirstPage.value = !showFirstPage.value
   }
 }
 
 const sentTocustomized = (x) => {
   customized_min.value = x
+  customized_sec.value = 0
 }
-
 ///////////////////////////////////////////////////////////////////////////
 // // เวลา
 // import TimerComponent from './components/TimerComponent.vue';
 // import CustomTime from './components/CustomTime.vue';
 
 // // เวลา
-const customized_min = ref(25) // initial minutes
-const customized_sec = ref(0) // initial seconds
+const customized_min = ref(0) // initial minutes
+const customized_sec = ref(10) // initial seconds
 
 
 // // เวลา
@@ -60,10 +67,10 @@ const customized_sec = ref(0) // initial seconds
 
 <template>
   <div class="w-screen h-screen ">
-      <FirstPage @nextPage="goNextPage" v-show="closeFirstPage"/>
+      <FirstPage v-show="showFirstPage" @nextPage="goNextPage"/>
       <TimeDisplay  v-show="showTimeDisplayPage" :minutes="customized_min" :seconds="customized_sec" 
-      @sendValue="sentTocustomized" @openTask="openTodoList"/>
-      <TodoList v-show="openTodoListPage" />
+      @sendValue="sentTocustomized" @openTask="goTodoList" @goBacktoFirstpage="backFirstpage"/>
+      <TodoList v-show="showTodoListPage"/>
   </div>
 </template>
 <style scoped>

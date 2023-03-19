@@ -1,4 +1,5 @@
 <script type="module">
+  import { ref, defineEmits, defineProps } from 'vue';
   export default {
   data() {
     return {

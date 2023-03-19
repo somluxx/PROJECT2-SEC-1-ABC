@@ -85,7 +85,7 @@ resetTimer(); // execute resetTimer function
 const tomato = 'images/tomatoman.png'
 // const gearimage = 'images/gear.png'
 // const box = reactive([25])
-const emits = defineEmits(['sendValue','openTask'])
+const emits = defineEmits(['sendValue','openTask','goBacktoFirstpage'])
 
 // const showpomodoro = (e) => {
 //     if(e.target.value === 'pomo'){
@@ -147,7 +147,10 @@ const emits = defineEmits(['sendValue','openTask'])
 <div class="w-full h-4/5 bg-red-400 p-2">
     <div class="w-full flex pb-5">
         <div class="w-1/2">
-        <img :src="tomato" class="w-20"/>
+        <!-- <img :src="tomato" class="w-20"/> -->
+        <div class="flex justify-start pt-2">
+                <button class="w-48 h-12 bg-white rounded-3xl text-4xl tracking-wider " @click="$emit('goBacktoFirstpage',true)">Back</button>
+            </div>
         </div>
         <div class="w-1/2">
             <div class="flex justify-end pt-2">
