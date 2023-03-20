@@ -169,7 +169,8 @@ function handleFileChange(event) {
  
 <template>
 <div class="w-screen h-screen">
-<div :style="{ backgroundImage: `url(${backgroundImageUrl})`, backgroundColor: backgroundColor }" class="w-full h-4/5 bg-red-400 p-2">
+  <div class="w-full h-4/5 p-2">
+  <div :style=" { backgroundImage: `url(${state.backgroundImageUrl})`, backgroundColor: backgroundColor } " class="w-screen bg-red-400 h-screen p-2">
     <div class="w-full flex pb-5">
         <div class="w-1/2">
         <!-- <img :src="tomato" class="w-20"/> -->
@@ -244,6 +245,7 @@ function handleFileChange(event) {
             เบรคยาว
         </button>
     </div>
+</div>
 </div>
 </div>
 </template>
