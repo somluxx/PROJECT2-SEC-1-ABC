@@ -1,73 +1,33 @@
 <script setup>
 import { ref, computed } from 'vue'
 
-
 const tasks = ref([])
-
-const newTaskName = ref('')
 const showAddTaskPopup = ref(false)
 const showAllTasksPopup = ref(false)
+const newTaskName = ref('')
+
+const countTask = computed(() => {
+  return tasks.value.length
+})
 
 const addTask = () => {
-  tasks.value.push({ name: newTaskName.value, completed: false })
-  newTaskName.value = ''
-  showAddTaskPopup.value = false
-}
-
-const toggleCompleted = (index) => {
-  tasks.value[index].completed = !tasks.value[index].completed
+  if (!newTaskName.value || newTaskName.value.trim() === '') {
+    return
+  } else {
+    tasks.value.push(newTaskName.value.trim())
+    showAddTaskPopup.value = false
+    newTaskName.value = ''
+  }
 }
 
 const toggleShowAllTasksPopup = () => {
   showAllTasksPopup.value = !showAllTasksPopup.value
 }
 
-const completedTasks = computed(() => {
-  return tasks.value.filter((task) => task.completed)
-})
+const toggleCompleted = (index) => {
+  tasks.value[index].completed = !tasks.value[index].completed
+}
 
-const uncompletedTasks = computed(() => {
-  return tasks.value.filter((task) => !task.completed)
-})
-
-// const toggleTimer = () => {
-//   isTimerRunning.value = !isTimerRunning.value
-// }
-
-
-// const isTimerRunning = ref(false)
-
-// const timer = ref(0)
-
-
-// const startTimer = () => {
-//   if (isTimerRunning.value) {
-//     timer.value = timer.value + 1
-//   }
-// }
-
-// setInterval(startTimer, 1000)
-
-// const minutes = computed(() => {
-//   return Math.floor(timer.value / 60)
-// })
-
-// const seconds = computed(() => {
-//   return timer.value % 60
-// })
-
-// const formattedMinutes = computed(() => {
-//   return minutes.value < 10 ? `0${minutes.value}` : minutes.value
-// })
-
-// const formattedSeconds = computed(() => {
-//   return seconds.value < 10 ? `0${seconds.value}` : seconds.value
-// })
-
-
-// const formattedTime = computed(() => {
-//   return `${formattedMinutes.value}:${formattedSeconds.value}`
-// })
 </script>
 
 <template>
