@@ -22,11 +22,17 @@ const props = defineProps({ // define props minutes and seconds for binding prop
   }
 });
 const startBtnText = ref(false); // make text button show "Start"
+// คำนวณเวลาที่ส่งมา
 const pomodoroDefaultTimer = ref(props.minutes * 60  + props.seconds); // DefaultPomodoroTimer will refers by props value which is valued by user in App.vue page (Passing props), this will stored timer in 'SECONDS' unit
+// เก็บค่าตัวเเปลที่ส่งมาเป็น default 
 const defaultPomodoroTime = props.minutes * 60 + props.seconds; // Duplicate define defaultPomodoroTimer for specific purpose (Reset Timer)
+// computed คือจัดเก็บค่าที่เปลี่ยนเเปลง 
+// คำนวณออกมาเป็น นาที 
 const minutes = computed(() => {
+  console.log(pomodoroDefaultTimer.value)
   return Math.floor(pomodoroDefaultTimer.value / 60); // Calculate Minutes (Use Integer)
 });
+// คำนวณออกมาเป็นวินาที 
 const seconds = computed(() => {
   return Math.floor(pomodoroDefaultTimer.value % 60); // Calculate Seconds (Use Remainder)
 });
@@ -37,7 +43,9 @@ const countDownSystem = () => {
   if (startBtnText.value) { // startBtn === true
     intervalId = setInterval(() => { //start IntervalTime (1 second each process)
       if (pomodoroDefaultTimer.value > 0) {
-        pomodoroDefaultTimer.value--; // if time is not reach 0 sec, decreasing the time
+        pomodoroDefaultTimer.value--; 
+        // console.log(pomodoroDefaultTimer.value) 
+        // if time is not reach 0 sec, decreasing the time
       } else {
         clearInterval(intervalId); //if reachs 0, clearInterval (Stop)
         thatThongSound.play() // play an audio
@@ -48,7 +56,8 @@ const countDownSystem = () => {
     clearInterval(intervalId); // else --> clearInterval
   }
 };
-
+// console.log(pomodoroDefaultTimer.value)
+// ใช้สำหรับในการเปลี่ยนหากมีการส่ง defineProps มาจาก Components อื่นมาใหม่
 watch(() => props.minutes, (newValue) => {
   // Use watcher to tracking the minutes changes in props value to update to Parent Component
   pomodoroDefaultTimer.value = newValue * 60 + props.seconds;
@@ -68,11 +77,14 @@ const resetTimer = () => {
   thatThongSound.pause() // pause an audio
 };
 resetTimer(); // execute resetTimer function
+
+
 </script>
 
 <template>
-  <div>
-  <div class="whatis-modal mt-7 flex justify-center">
+  <div class="w-full h-full">
+    <!-- ใส่เเล้ว -->
+  <!-- <div class="whatis-modal mt-7 flex justify-center">
     <label for="my-modal-5" class="btn">Know more !</label>
 
     <input type="checkbox" id="my-modal-5" class="modal-toggle" />
@@ -85,8 +97,8 @@ resetTimer(); // execute resetTimer function
         </div>
       </div>
     </div>
-  </div>
-    <div class="flex text-center gap-x-6 text-3xl justify-center mt-10">
+  </div> -->
+    <!-- <div class="flex text-center gap-x-6 text-3xl justify-center mt-10">
       <p>Minutes</p>
       <span class="countdown font-mono text-6xl">
         <span :style="{ '--value': minutes }"></span>
@@ -95,7 +107,7 @@ resetTimer(); // execute resetTimer function
       <span class="countdown font-mono text-6xl">
         <span :style="{ '--value': seconds }"></span>
       </span>
-    </div>
+    </div> -->
 
     <button class="btn btn-success text-center justify-center flex ml-40 mt-5" @click="countDownSystem">{{ startBtnText ? 'Pause' : 'Start' }}</button>
 

@@ -3,7 +3,7 @@
 import { ref,defineEmits, computed } from 'vue';
 const custom_min = ref()
 const custom_sec = ref()
-const emits = defineEmits(['customizedTime']) // define emits
+// const emits = defineEmits(['customizedTime']) // define emits
 
 const emitsClick = () => { // define fucnion onClick button
     // emits values in object term, when user clicked the button a values will emits to parent component (App.vue)

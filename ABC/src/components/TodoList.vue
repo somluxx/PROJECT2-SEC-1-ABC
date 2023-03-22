@@ -1,45 +1,90 @@
-<script setup>
-import { ref } from 'vue'
+<script type="module">
+  import { ref, defineEmits, defineProps } from 'vue';
+  export default {
+  data() {
+    return {
+      tasks: [],
+      showAddTaskPopup: false,
+      showAllTasksPopup: false, 
+      newTaskName: "",
 
-const tasks = ref([])
-const showAddTaskPopup = ref(false)
-const showAllTasksPopup = ref(false)
-const newTaskName = ref("")
+      //comment
+      newComment: '',
+      comments: [],
+    }
+  },
+  computed: {
+    taskCount() {
+      return this.tasks.length
+    },
+  },
+  methods: {
+    addTask() {
+      if (this.newTaskName.trim() === "") {
+        return;
+      }
+      this.tasks.push(this.newTaskName.trim())
+      this.showAddTaskPopup = false
+      this.newTaskName = ""
+    },
+    toggleShowAllTasksPopup() { 
+        this.showAllTasksPopup = !this.showAllTasksPopup;
+      },
+      toggleCompleted(index) {
+        this.tasks[index].completed = !this.tasks[index].completed;
+      },
 
-const taskCount = computed(() => tasks.value.length)
-
-function addTask() {
-  if (newTaskName.value.trim() === "") {
-    return;
-  }
-  tasks.value.push(newTaskName.value.trim())
-  showAddTaskPopup.value = false
-  newTaskName.value = ""
+      // add comment ไป
+      addComment() {
+      if (this.newComment !== '') {
+        this.comments.push(this.newComment);
+        this.newComment = '';
+      }
+    },
+  
+  },
 }
 
-function toggleShowAllTasksPopup() { 
-  showAllTasksPopup.value = !showAllTasksPopup.value;
-}
-
-function toggleCompleted(index) {
-  tasks.value[index].completed = !tasks.value[index].completed;
-}
 </script>
 
 <template>
-   <div class="bg-red-500 h-screen flex flex-row items-center justify-center">
-    <div class="w-1/2 h-screen border-r border-black flex flex-col items-center justify-center">
+   <div class="bg-red-400 h-screen flex flex-row items-center justify-center">
+    
+    <!-- <div class="w-1/2 h-screen border-r border-black flex flex-col items-center justify-center">
       <div class="bg-red-400 text-white text-9xl font-bold rounded-lg p-4 mb-9">22:46</div>
       
       <div class="mt-2">
           <button class="bg-white text-5xl text-red-500 py-2 px-4 rounded-lg"
                   @click="toggleTimer">
-            {{ isTimerRunning ? 'Start' : 'Pause'}}
+             {{ isTimerRunning ? 'Start' : 'Pause'}} 
           </button>
       </div>    
+    </div> -->
+
+    <div class="w-1/2 h-screen border-r border-black flex flex-col items-center justify-center">
+    <h2 class="text-white text-5xl mb-4">Comment</h2>
+    <p class="text-white text-2xl mb-4">Let's comment มามะ</p>
+
+    <div class="w-full max-w-md  text-center">
+      <textarea
+        class="shadow appearance-none border rounded w-full py-2 px-3 mb-4 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+        placeholder="Write your comment here..."
+        v-model="newComment"
+      ></textarea>
+      <button
+        class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
+        @click="addComment"
+      >
+        Submit
+      </button>
     </div>
 
-
+    <div class="w-full max-w-md mt-4" style="height: 300px; overflow-y: auto;">
+      <div v-for="(comment, index) in comments" :key="index" class="bg-white shadow-md rounded p-4 my-2">
+        <p class="text-gray-700">{{ comment }}</p>
+      </div>
+    </div>
+  </div>
 
     
 
@@ -102,6 +147,11 @@ function toggleCompleted(index) {
     </div>
   </div>
   </div> 
+  <div class="fixed bottom-4 right-4">
+      <button class="bg-white text-red-500 py-2 px-4 rounded-full shadow-lg" @click="$emit('closeTask')">
+        Back
+      </button>
+      </div>
   </div>
 </template>
 
