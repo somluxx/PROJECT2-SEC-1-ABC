@@ -1,13 +1,40 @@
 <!-- หน้าเเรก -->
 <script setup>
+
     import { ref, defineEmits } from 'vue';
+   
+    // import {router} from '../router/router.js'
+
+
+import TodoList from './TodoList.vue';
+   
+//
+    // import { RouterView } from 'vue-router'
+    // import { RouterLink } from 'vue-router'
+    // import { createRouter, createWebHashHistory } from 'vue-router'
     const tomato = 'images/tomatoman.png'
     const emits = defineEmits(['nextPage'])
-    
+   
+    const handleClick = () => {
+    router.push('/todo')
+  }
+
+//   const routes = [
+//   { path: '/', component: () => import('../components/FirstPage.vue') },
+//   { path: '/todo', component: TodoList },
+// ]
+
+// const router = createRouter({
+//   history: createWebHashHistory(),
+//   routes,
+// })
+
 </script>
  
 <template>
 <div class="w-screen h-screen bg-red-400">
+     <router-link to="/todo">Go to TodoList</router-link>
+    <button @click="handleClick">Go to TodoList</button> 
     <div class="flex flex-col ">
         <div class="flex w-full justify-center">  
             <h1 class="pt-14 pb-5 text-7xl font-normal text-white font-sans tracking-widest">Pomodoro</h1> 
@@ -37,6 +64,8 @@
             </div>
             <div class="flex justify-end">
             <h1 class="text-5xl font-normal text-white font-sans tracking-widest p-5">by ABC group</h1> 
+          
+
             </div>
         </div>
      

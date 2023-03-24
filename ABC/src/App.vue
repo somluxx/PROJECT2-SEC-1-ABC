@@ -58,7 +58,7 @@ const customized_sec = ref(10) // initial seconds
 
 // // เวลา
 // const timeSelected = (data) =>{
-//     console.log(`Min:${data.min},Sec:${data.sec}`)
+//     console.log(`Min:${data.minc},Sec:${data.sec}`)
 //         customized_min.value = data.min
 //         customized_sec.value = data.sec
 // }

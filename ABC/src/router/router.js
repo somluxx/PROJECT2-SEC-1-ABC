@@ -1,4 +1,5 @@
 import { createRouter, createWebHashHistory } from 'vue-router'
+
 import FirstPage from '../components/FirstPage.vue'
 import TodoList from '../components/TodoList.vue'
 
@@ -11,3 +12,5 @@ const router = createRouter({
   history: createWebHashHistory(),
   routes,
 })
+
+export  {router}
