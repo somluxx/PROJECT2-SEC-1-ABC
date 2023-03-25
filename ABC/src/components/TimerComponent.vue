@@ -2,7 +2,7 @@
 import { ref, computed, defineProps, watch } from "vue";
 import alert from "/alert.mp3"
 import ThatThongSound from '/ThatThongSound.mp3'
-const audio = new Audio(alert)
+// const audio = new Audio(alert)
 const thatThongSound = new Audio(ThatThongSound)
 const showModal = ref(false);
 const showModalStyle = 'block visible';

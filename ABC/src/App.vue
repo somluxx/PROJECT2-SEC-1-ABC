@@ -1,7 +1,9 @@
 <script setup>
 import TimerComponent from './components/TimerComponent.vue';
 import CustomTime from './components/CustomTime.vue';
+import TodoList from './components/TodoList.vue';
 import { ref,onMounted } from 'vue';
+
 
 const customized_min = ref(25) // initial minutes
 const customized_sec = ref(0) // initial seconds
@@ -30,6 +32,12 @@ onMounted(()=>{
                <CustomTime @customizedTime="timeSelected" class="mt-5" />
             </div>
         </div>
-        <p class="flex justify-center mt-10">Disclaimer: All alert sounds featured in this Web Application are sourced from Windows 11 Media, which is owned by &copy; Microsoft Corporation.</p>
+        <p class="flex justify-center mt-10 line-through">Disclaimer: All alert sounds featured in this Web Application are sourced from Windows 11 Media, which is owned by &copy; Microsoft Corporation.</p>
+        <TodoList/>
     </div>
+
 </template>
+
+<style scoped>
+
+</style>
