@@ -42,6 +42,7 @@ const sentTocustomized = (x) => {
   customized_min.value = x
   customized_sec.value = 0
 }
+//dsadsad
 ///////////////////////////////////////////////////////////////////////////
 // // เวลา
 // import TimerComponent from './components/TimerComponent.vue';
