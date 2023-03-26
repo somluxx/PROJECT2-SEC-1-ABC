@@ -1,4 +1,4 @@
-<script setup>
+<!-- <script setup>
 import { ref,onMounted, reactive } from 'vue';
 import CustomeTime from './components/CustomeTime.vue';
 
@@ -76,4 +76,64 @@ const customized_sec = ref(10) // initial seconds
 </template>
 <style scoped>
 
+</style> -->
+
+<script setup>
+  // import FirstPage from '../src/components/FirstPage.vue';
+  // import Home from '../src/components/Home.vue'
+</script>
+<template>
+  <div class="w-screen h-full">
+    <div id="Navbar" class="purple w-full h-24">
+      <span  class="e1_9">TOMATO </span>
+      <span  class="e1_10">POMODORO</span>
+      <div class="flex justify-end space-x-20 pt-12">
+        <span  class="font">TIMER</span>
+        <span  class="font">LIST</span>
+        <span  class="font">COMMENT</span> 
+        <span  class="font">SETTING</span>
+      </div>
+    </div>
+    <!-- <FirstPage/> -->
+    <!-- <Home/> -->
+</div>
+</template>
+<style>
+
+.purple { 
+	background-color:rgba(77.00000301003456, 69.00000348687172, 93.00000205636024, 1);
+}
+.e1_9 { 
+	color:rgba(255, 255, 255, 1);
+	width:320px;
+	height:49.26315689086914px;
+	position:absolute;
+	left:33px;
+	top:13.894744873046875px;
+	font-family:Inter;
+	text-align:left;
+	font-size:32px;
+	letter-spacing:0;
+}
+.e1_10 { 
+	color:rgba(255, 255, 255, 1);
+	width:149px;
+	height:39.157894134521484px;
+	position:absolute;
+	left:119px;
+	top:53.052642822265625px;
+	font-family:Inter;
+	text-align:left;
+	font-size:24px;
+	letter-spacing:0;
+}
+.font { 
+	color:rgba(255, 255, 255, 1);
+	width:158px;
+	height:37.894737243652344px;
+	font-family:Inter;
+	text-align:center;
+	font-size:24px;
+	letter-spacing:0;
+}
 </style>
