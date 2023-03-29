@@ -1,4 +1,4 @@
-<!-- <script setup>
+<script setup>
 import { ref,onMounted, reactive } from 'vue';
 import CustomeTime from './components/CustomeTime.vue';
 
@@ -75,30 +75,6 @@ const customized_sec = ref(10) // initial seconds
   </div>
 </template>
 <style scoped>
-
-</style> -->
-
-<script setup>
-  // import FirstPage from '../src/components/FirstPage.vue';
-  // import Home from '../src/components/Home.vue'
-</script>
-<template>
-  <div class="w-screen h-full">
-    <div id="Navbar" class="purple w-full h-24">
-      <span  class="e1_9">TOMATO </span>
-      <span  class="e1_10">POMODORO</span>
-      <div class="flex justify-end space-x-20 pt-12">
-        <span  class="font">TIMER</span>
-        <span  class="font">LIST</span>
-        <span  class="font">COMMENT</span> 
-        <span  class="font">SETTING</span>
-      </div>
-    </div>
-    <!-- <FirstPage/> -->
-    <!-- <Home/> -->
-</div>
-</template>
-<style>
 
 .purple { 
 	background-color:rgba(77.00000301003456, 69.00000348687172, 93.00000205636024, 1);
