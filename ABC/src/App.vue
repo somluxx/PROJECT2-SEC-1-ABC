@@ -9,7 +9,7 @@ import FirstPage from './components/FirstPage.vue';
 import TimeDisplay from './components/TimeDisplay.vue';
 import TimerComponent from './components/TimerComponent.vue';
 import TodoList from './components/TodoList.vue'
-
+import NavBar from './components/NavBar.vue';
 
 // ตัวเเปรในการใช้ v-show 
 const showFirstPage = ref(true)
@@ -67,10 +67,12 @@ const customized_sec = ref(10) // initial seconds
 
 <template>
   <div class="w-screen h-screen ">
+      <NavBar/>
       <FirstPage v-show="showFirstPage" @nextPage="goNextPage"/>
       <TimeDisplay  v-show="showTimeDisplayPage" :minutes="customized_min" :seconds="customized_sec" 
       @sendValue="sentTocustomized" @openTask="goTodoList" @goBacktoFirstpage="backFirstpage"/>
       <TodoList v-show="showTodoListPage"/>
+      <!-- <router-view></router-view> -->
   </div>
 </template>
 <style scoped>

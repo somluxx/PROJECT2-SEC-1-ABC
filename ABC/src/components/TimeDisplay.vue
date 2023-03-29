@@ -143,8 +143,8 @@ const emits = defineEmits(['sendValue','openTask','goBacktoFirstpage'])
 </script>
  
 <template>
-<div class="w-screen h-screen">
-<div class="w-full h-4/5 bg-red-400 p-2">
+<div class="w-screen h-screen bg-[#E96479]">
+<div class="bg w-full h-4/5 p-2">
     <div class="w-full flex pb-5">
         <div class="w-1/2">
         <!-- <img :src="tomato" class="w-20"/> -->
@@ -163,15 +163,16 @@ const emits = defineEmits(['sendValue','openTask','goBacktoFirstpage'])
         <div class="flex text-center gap-x-6 text-6xl justify-center mt-10 text-white">
             <p>Minutes</p>
             <span class="countdown font-mono text-6xl">
-                <span :style="{ '--value': minutes }"></span>
+                <span class="mt-1" :style="{ '--value': minutes }"></span>
             </span>
             <p>Seconds</p>
             <span class="countdown font-mono text-6xl">
-                <span :style="{ '--value': seconds }"></span>
+                <span class="mt-1" :style="{ '--value': seconds }"></span>
             </span>
         </div>
         <div class="flex justify-end">
-            <button class="bg-red-300 rounded-xl w-64 h-24 text-white text-6xl font-bold pr-24" @click="$emit('openTask',true)">Task</button>
+            <button class="bg-[#4D455D] text-center rounded-xl w-40 h-20 text-white text-3xl font-bold mr-5 
+            " @click="$emit('openTask',true)">Task</button>
         </div>
 
         <div class="w-full flex justify-center pt-20">
@@ -192,14 +193,14 @@ const emits = defineEmits(['sendValue','openTask','goBacktoFirstpage'])
 </div>
 <div class="w-full h-1/5 bg-gray-800 p-10">
     <div class="flex justify-center space-x-7">
-        <button class="bg-red-400 rounded-xl w-64 h-24 text-white text-4xl font-semibold" value="pomo" @click="$emit('sendValue',20)">
-            โพโมโดโร่
+        <button class="bg-red-400 rounded-xl w-64 h-24 text-white text-4xl font-semibold" value="pomo" @click="$emit('sendValue',25)">
+            Pomodoro
         </button>
         <button class="bg-green-400 rounded-xl w-64 h-24 text-white text-4xl font-semibold" value="short" @click="$emit('sendValue',5)">
-            เบรคสั้น
+            Short Break
         </button>
         <button class="bg-green-600 rounded-xl w-64 h-24 text-white text-4xl font-semibold" value="long" @click="$emit('sendValue',15)">
-            เบรคยาว
+            Long Break
         </button>
     </div>
 </div>
@@ -207,4 +208,16 @@ const emits = defineEmits(['sendValue','openTask','goBacktoFirstpage'])
 </template>
  
 <style scoped>
+/* .bg{
+  background: linear-gradient(65deg, #86c55a, #df5b5b, #8f86ee, #ff63ad, #b9ac3c, #4844ff, #14ff28);
+    background-size: 1400% 1400%;
+    animation: AnimationName 40s ease infinite;
+} */
+
+/* @keyframes AnimationName {
+    0%{background-position:0% 50%}
+    50%{background-position:100% 50%}
+    100%{background-position:0% 50%}
+} */
+
 </style>
