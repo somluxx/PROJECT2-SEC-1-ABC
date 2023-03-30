@@ -19,6 +19,7 @@ onBeforeMount(async() => {
   comments.value = await getComments()
   commentsaddtoFiveComments()
 })
+
 //commentsFunction 
 const commentsaddtoFiveComments = () => {
   if(comments.value.length > 5){
@@ -38,13 +39,14 @@ const commentsaddtoFiveComments = () => {
 
 //POST 
 const textChat = ref()
+const showError = ref(false)
 const sendTextChat = async(x) => {
   if(x != undefined){
     sendToBackEnd(x)
   }
   // ไว้เด้ง POPUP ขึ้นมาสำหรับไม่ใส่ค่า 
   else{
-    alert('ส่งไรมาครับผม')
+    showError.value = true
   }
   textChat.value = null
   // console.log(x)
@@ -90,7 +92,7 @@ const sendToBackEnd = async(text) => {
           </div>
 
           <div class="input-form flex flex-col justify-start mt-8 gap-y-5 px-2 sm:px-44 relative">
-                <input placeholder="Write Comment Here ..." type="text" name="comment" id="comment" class="pl-3 rounded-md w-full h-8 border-b-4 border-blue-500 bg-white" v-model="textChat">
+                <input placeholder="Write Comment Here ..." type="text" name="comment" id="comment" class="pl-3 rounded-md w-full h-8 border-b-4 border-blue-500 bg-white text-black font-bold" v-model="textChat">
                 <div class="flex flex-row items-center justify-between">
                   <button class="btn btn-active btn-error w-20 mt-2 mb-10" @click="sendTextChat(textChat)">Submit</button>
                   <span class="ml-28 top-16 absolute mt-2 text-red-600 font-bold sm:block">กรุณากรอกข้อมูล (เมื่อไม่กรอกข้อมูลแล้วกดส่ง)</span>

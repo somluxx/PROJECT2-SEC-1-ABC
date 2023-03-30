@@ -8,7 +8,7 @@ import FirstPage from './components/FirstPage.vue';
 //หน้าสอง TimeDisplay เป็นคัวโชวเวลา
 import TimeDisplay from './components/TimeDisplay.vue';
 import TimerComponent from './components/TimerComponent.vue';
-import TodoList from './components/TodoList.vue'
+import TodoList from './components/Comment.vue'
 import NavBar from './components/NavBar.vue';
 
 // ตัวเเปรในการใช้ v-show 

@@ -153,7 +153,7 @@ const emits = defineEmits(['sendValue','openTask','goBacktoFirstpage'])
 // let twetyfivemin = 1000 * 60 * 25
 // console.log(twetyfivemin)
 const sendFixedTime = () =>{
-  
+
 }
 </script>
  
