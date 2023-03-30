@@ -67,7 +67,7 @@ const sendToBackEnd = async(text) => {
       comments.value.push(addComments)
       commentsaddtoFiveComments()
   }
-    else throw new Error('ไม่สามารถทำการส่งค่ามาได้')
+    else throw new Error('Comment add failed.')
   } catch (err){
     console.log(err)
   }
@@ -92,13 +92,12 @@ const sendToBackEnd = async(text) => {
           <div class="input-form flex flex-col justify-start mt-8 gap-y-5 px-2 sm:px-44 relative">
                 <input placeholder="Write Comment Here ..." type="text" name="comment" id="comment" class="pl-3 rounded-md w-full h-8 border-b-4 border-blue-500 bg-white" v-model="textChat">
                 <div class="flex flex-row items-center justify-between">
-                  <button class="btn btn-active btn-error w-20 mt-2 mb-10" @click="sendTextChat(textChat)">Button</button>
+                  <button class="btn btn-active btn-error w-20 mt-2 mb-10" @click="sendTextChat(textChat)">Submit</button>
                   <span class="ml-28 top-16 absolute mt-2 text-red-600 font-bold sm:block">กรุณากรอกข้อมูล (เมื่อไม่กรอกข้อมูลแล้วกดส่ง)</span>
                 </div>
           </div>
       </div>
 </div>
-
 
     <!-- <div class="w-1/2 h-screen flex items-center justify-center">
       <div class="space-y-6 flex flex-col mt-20">
@@ -120,7 +119,6 @@ const sendToBackEnd = async(text) => {
       </div>
       </div>
       </div>
-     
     </div> -->
   </div>
 
@@ -128,14 +126,12 @@ const sendToBackEnd = async(text) => {
 
 <style scoped>
 .comment-section {
-  /* Set default styles */
   padding: 20px;
   margin: 0 auto;
   max-width: 800px;
 }
 
 @media only screen and (max-width: 600px) {
-  /* Adjust styles for smaller screens */
   .comment-section {
     padding: 10px;
   }
@@ -144,8 +140,5 @@ const sendToBackEnd = async(text) => {
   color:black;
 }
 
-input{
-
-}
 </style>
 

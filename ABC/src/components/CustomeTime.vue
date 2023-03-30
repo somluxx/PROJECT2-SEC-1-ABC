@@ -3,12 +3,18 @@
 import { ref,defineEmits, computed } from 'vue';
 const custom_min = ref()
 const custom_sec = ref()
-// const emits = defineEmits(['customizedTime']) // define emits
+const emits = defineEmits(['customizedTime']) // define emits
+
+// const emitsClick = () => { // define fucnion onClick button
+//     // emits values in object term, when user clicked the button a values will emits to parent component (App.vue)
+//     emits('customizedTime',{min:custom_min.value,sec:custom_sec.value})
+
 
 const emitsClick = () => { // define fucnion onClick button
     // emits values in object term, when user clicked the button a values will emits to parent component (App.vue)
     emits('customizedTime',{min:custom_min.value,sec:custom_sec.value})
-}
+    console.log(custom_min.value)
+}// }
 </script>
  
 <template>
@@ -23,5 +29,7 @@ const emitsClick = () => { // define fucnion onClick button
 </template>
  
 <style scoped>
-
+div{
+    color:white;
+}
 </style>
