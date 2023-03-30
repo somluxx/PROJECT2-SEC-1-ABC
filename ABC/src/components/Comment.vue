@@ -25,7 +25,7 @@ const commentsaddtoFiveComments = () => {
   if(comments.value.length > 5){
     fiveComments.value = []
     fiveComments.value = comments.value.slice(-5)
-    console.log(fiveComments.value)
+    // console.log(fiveComments.value)
   }
   else{
     for(const loop in comments.value){
@@ -95,7 +95,7 @@ const sendToBackEnd = async(text) => {
                 <input placeholder="Write Comment Here ..." type="text" name="comment" id="comment" class="pl-3 rounded-md w-full h-8 border-b-4 border-blue-500 bg-white text-black font-bold" v-model="textChat">
                 <div class="flex flex-row items-center justify-between">
                   <button class="btn btn-active btn-error w-20 mt-2 mb-10" @click="sendTextChat(textChat)">Submit</button>
-                  <span class="ml-28 top-16 absolute mt-2 text-red-600 font-bold sm:block">กรุณากรอกข้อมูล (เมื่อไม่กรอกข้อมูลแล้วกดส่ง)</span>
+                  <span class="ml-28 top-16 absolute mt-2 text-red-600 font-bold sm:block" v-show="showError">กรุณากรอกข้อมูล...</span>
                 </div>
           </div>
       </div>

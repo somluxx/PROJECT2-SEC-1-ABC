@@ -39,8 +39,9 @@ const backFirstpage = (x) => {
 }
 
 const sentTocustomized = (x) => {
-  customized_min.value = x
-  customized_sec.value = 0
+  // console.log(x)
+    customized_min.value = x.min
+    customized_sec.value = x.sec
 }
 ///////////////////////////////////////////////////////////////////////////
 // // เวลา
@@ -48,8 +49,8 @@ const sentTocustomized = (x) => {
 // import CustomTime from './components/CustomTime.vue';
 
 // // เวลา
-const customized_min = ref(0) // initial minutes
-const customized_sec = ref(10) // initial seconds
+const customized_min = ref() // initial minutes
+const customized_sec = ref() // initial seconds
 
 
 // // เวลา
