@@ -1,3 +1,4 @@
+// Navbar
 <script setup>
 
 </script>

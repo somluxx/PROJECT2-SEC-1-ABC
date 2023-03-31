@@ -1,3 +1,4 @@
+// Custom Time
 <!-- เวลา -->
 <script setup>
 import { ref,defineEmits, computed } from 'vue';

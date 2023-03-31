@@ -1,3 +1,4 @@
+// Time Display
 <!-- หน้าเเรก -->
 <script setup>
 import { ref, computed, defineProps, defineEmits,  watch, reactive } from "vue";
