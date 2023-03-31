@@ -1,20 +1,26 @@
+// App
 <script setup>
 import { ref,onMounted, reactive } from 'vue';
 import CustomeTime from './components/CustomeTime.vue';
-
+import { RouterView } from 'vue-router'
 ///////////////////////////////////////////////////////////////////////////
 //หน้าเเรก FirstPage มีการใช้ defineEmits เชื่อมกับ @Click  
 import FirstPage from './components/FirstPage.vue';
 //หน้าสอง TimeDisplay เป็นคัวโชวเวลา
 import TimeDisplay from './components/TimeDisplay.vue';
-import TimerComponent from './components/TimerComponent.vue';
+// import TimerComponent from './components/TimerComponent.vue';
 import TodoList from './components/Comment.vue'
-import NavBar from './components/NavBar.vue';
-
+import NavBar from './view/NavBar.vue';
+import NewTodoListWithSound from './components/NewTodoListWithSound.vue';
 // ตัวเเปรในการใช้ v-show 
 const showFirstPage = ref(true)
 const showTimeDisplayPage = ref(false)
 const showTodoListPage = ref(false)
+const showEnvAndTodoListPage = ref(false)
+
+onMounted(() => {
+  document.title = 'Pomodoro Timer Wow'
+})
 
 // function ที่ทำให้หน้าเเรกกับหน้าสองนั้นเชื่อมโยงกัน
 const goNextPage = (x) => {
@@ -39,8 +45,9 @@ const backFirstpage = (x) => {
 }
 
 const sentTocustomized = (x) => {
-  customized_min.value = x
-  customized_sec.value = 0
+  // console.log(x)
+    customized_min.value = x.min
+    customized_sec.value = x.sec
 }
 ///////////////////////////////////////////////////////////////////////////
 // // เวลา
@@ -48,8 +55,8 @@ const sentTocustomized = (x) => {
 // import CustomTime from './components/CustomTime.vue';
 
 // // เวลา
-const customized_min = ref(0) // initial minutes
-const customized_sec = ref(10) // initial seconds
+const customized_min = ref() // initial minutes
+const customized_sec = ref() // initial seconds
 
 
 // // เวลา
@@ -67,12 +74,12 @@ const customized_sec = ref(10) // initial seconds
 
 <template>
   <div class="w-screen h-screen ">
-      <NavBar/>
-      <FirstPage v-show="showFirstPage" @nextPage="goNextPage"/>
-      <TimeDisplay  v-show="showTimeDisplayPage" :minutes="customized_min" :seconds="customized_sec" 
+      <NavBar />
+      <RouterView />
+      <!-- <TimeDisplay v-show="showTimeDisplayPage" :minutes="customized_min" :seconds="customized_sec" 
       @sendValue="sentTocustomized" @openTask="goTodoList" @goBacktoFirstpage="backFirstpage"/>
       <TodoList v-show="showTodoListPage"/>
-      <!-- <router-view></router-view> -->
+      <NewTodoListWithSound v-show="showEnvAndTodoListPage"/> -->
   </div>
 </template>
 <style scoped>

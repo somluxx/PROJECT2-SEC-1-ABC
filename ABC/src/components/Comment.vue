@@ -1,3 +1,4 @@
+// Comment
 <script setup >
 import {ref, onBeforeMount} from 'vue'
   const getComments = async() => {
@@ -25,7 +26,7 @@ const commentsaddtoFiveComments = () => {
   if(comments.value.length > 5){
     fiveComments.value = []
     fiveComments.value = comments.value.slice(-5)
-    console.log(fiveComments.value)
+    // console.log(fiveComments.value)
   }
   else{
     for(const loop in comments.value){
@@ -92,10 +93,10 @@ const sendToBackEnd = async(text) => {
           </div>
 
           <div class="input-form flex flex-col justify-start mt-8 gap-y-5 px-2 sm:px-44 relative">
-                <input placeholder="Write Comment Here ..." type="text" name="comment" id="comment" class="pl-3 rounded-md w-full h-8 border-b-4 border-blue-500 bg-white text-black font-bold" v-model="textChat">
+                <input placeholder="Write Comment Here ..." type="text" name="comment" id="comment" class="pl-3 rounded-xl w-full h-10 focus:border-b-4 border-blue-400 duration-200 bg-white text-black font-bold" v-model="textChat">
                 <div class="flex flex-row items-center justify-between">
                   <button class="btn btn-active btn-error w-20 mt-2 mb-10" @click="sendTextChat(textChat)">Submit</button>
-                  <span class="ml-28 top-16 absolute mt-2 text-red-600 font-bold sm:block">กรุณากรอกข้อมูล (เมื่อไม่กรอกข้อมูลแล้วกดส่ง)</span>
+                  <span class="ml-28 top-16 absolute mt-2 text-red-600 font-bold sm:block" v-show="showError">กรุณากรอกข้อมูล...</span>
                 </div>
           </div>
       </div>
@@ -143,4 +144,3 @@ const sendToBackEnd = async(text) => {
 }
 
 </style>
-
