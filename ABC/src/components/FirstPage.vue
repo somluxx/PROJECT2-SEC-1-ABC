@@ -1,4 +1,4 @@
-<script>
+<script setup>
     import { ref, defineEmits } from 'vue';
     const emits = defineEmits(['nextPage'])
 </script>
@@ -7,7 +7,7 @@
     <div class="bg-[#E96479] min-h-screen flex flex-col items-center justify-center">
         <h1 class="text-6xl font-normal text-white font-sans tracking-widest mt-10">Pomodoro</h1> 
         <h1 class="text-4xl font-normal text-white font-sans mt-5">Timer wow</h1>
-        <img src="../../public/images/tomatoman.png" class="w-40 md:w-64 pt-5"/>
+        <img src="/images/tomatoman.png" class="w-40 md:w-64 pt-5"/>
         <button class="bg-red-600 rounded-xl w-52 h-24 text-white text-4xl md:text-5xl font-semibold mt-5" @click="$emit('nextPage',true)">ENTER</button>
         <div class="whatis-modal mt-7">
             <label for="my-modal-5" class="btn text-white">Know more !</label>

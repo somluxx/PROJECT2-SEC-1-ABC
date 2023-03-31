@@ -85,41 +85,28 @@
       "id": 21
     },
     {
-<<<<<<< HEAD
       "chat": "สวยจังครับ",
       "id": 22
     },
     {
       "chat": "หห",
       "id": 23
-=======
-      "chat": "dasdasd",
-      "id": 22
     },
     {
-      "chat": "dasdasd",
-      "id": 23
-    },
-    {
-      "chat": "dasdasd",
+      "chat": "เย่",
       "id": 24
     },
     {
-      "chat": "dadsasd",
+      "chat": "sss",
       "id": 25
-    },
+    }
+  ],
+  "notCompleteTasks": [],
+  "completedTasks": [
     {
-      "chat": "1234",
-      "id": 26
-    },
-    {
-      "chat": "1234",
-      "id": 27
-    },
-    {
-      "chat": "dasd",
-      "id": 28
->>>>>>> d30a0002ad96b4a18d963c3500a29290d936ac8a
+      "task": "แดกเหล้า",
+      "checked": false,
+      "id": 2
     }
   ]
 }
