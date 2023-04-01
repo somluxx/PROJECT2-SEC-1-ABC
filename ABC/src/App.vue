@@ -19,7 +19,7 @@ const showTodoListPage = ref(false)
 const showEnvAndTodoListPage = ref(false)
 
 onMounted(() => {
-  document.title = 'Tomato Pomodoro | 🍅'
+  document.title = 'Tomato Pomodoro'
 })
 
 // function ที่ทำให้หน้าเเรกกับหน้าสองนั้นเชื่อมโยงกัน
