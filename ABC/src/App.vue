@@ -74,8 +74,8 @@ const customized_sec = ref() // initial seconds
 
 <template>
   <div class="w-screen h-screen ">
-      <NavBar />
-      <RouterView />
+    <NavBar />
+    <RouterView />
       <!-- <TimeDisplay v-show="showTimeDisplayPage" :minutes="customized_min" :seconds="customized_sec" 
       @sendValue="sentTocustomized" @openTask="goTodoList" @goBacktoFirstpage="backFirstpage"/>
       <TodoList v-show="showTodoListPage"/>

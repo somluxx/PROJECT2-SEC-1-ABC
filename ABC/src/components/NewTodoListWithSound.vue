@@ -1,12 +1,13 @@
 // New Todolist With Sound
 <script setup>
-import { ref } from 'vue'
-import SystemUiconsVolumeHigh from "./SystemUiconsVolumeHigh.vue";
-import SystemUiconsVolumeDisabled from './SystemUiconsVolumeDisabled.vue'
-import { onMounted, computed, onBeforeMount} from "vue";
+import { ref, onMounted, computed, onBeforeMount } from 'vue'
+import HeroiconsSolidPlus from './HeroiconsSolidPlus.vue'
+import HeroiconsSolidMinus from './HeroiconsSolidMinus.vue'
 const notCompleteTasks = ref([]);
 const completedTasks = ref([]);
 const newTask = ref("");
+const playFalse = 'bg-green-500 text-black hover:bg-green-600 duration-200' 
+const playTrue = 'bg-red-500 text-white hover:bg-red-600 duration-200'
 
 const fetchTasks = async () => {
   const notCompleteRes = await fetch("http://localhost:3000/notCompleteTasks");
@@ -151,7 +152,7 @@ const sounds = ref([
         <input type="text" id="task" class="border rounded-lg px-3 py-2 w-full" v-model="newTask">
       </div>
       <div class="mb-4">
-        <button class="bg-black hover:bg-red-700 text-white font-bold py-2 px-4 rounded" @click="addTask">Add</button>
+        <button class="bg-black hover:bg-red-700 duration-200 text-white font-bold py-2 px-4 rounded" @click="addTask">Add</button>
       </div>
       <div>
         <h2 class="text-xl font-bold mb-2">Not Completed:</h2>
@@ -181,14 +182,14 @@ const sounds = ref([
         <p class="text-lg text-white font-bold">{{ sound.name }}</p>
         <div class="flex items-center justify-center">
           <button class="focus:outline-none text-gray-300 hover:text-red-300" @click="decreaseVolume(sound)">
-            -
+            <button class="border-2 border-red-200 rounded-xl p-0.5"><HeroiconsSolidMinus/></button> 
           </button>
           <p class="text-lg text-white mx-4">{{ sound.volume }}%</p>
           <button class="focus:outline-none text-gray-300 hover:text-red-300" @click="increaseVolume(sound)">
-            +
+           <button class="border-2 border-red-200 rounded-xl p-0.5"><HeroiconsSolidPlus/></button> 
           </button>
         </div>
-        <button class="bg-red-500 text-white font-bold text-lg p-2 mt-4 rounded-lg shadow-md focus:outline-none hover:bg-red-700" @click="playSound(sound)">
+        <button class="bg-red-500 text-white font-bold text-lg p-2 mt-4 rounded-lg shadow-md focus:outline-none hover:bg-red-700" :class="sound.playing? playTrue:playFalse" @click="playSound(sound)">
           {{ sound.playing ? 'Stop' : 'Play' }}
         </button>
       </div>

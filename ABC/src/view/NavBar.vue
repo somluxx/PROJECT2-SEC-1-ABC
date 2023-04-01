@@ -14,7 +14,6 @@ import { RouterLink } from 'vue-router'
             <li><RouterLink to="/timer">TIMER</RouterLink></li>
             <li><RouterLink to="/list">LIST</RouterLink></li>
             <li><RouterLink to="/comment">COMMENT</RouterLink></li>
-            <li>SETTING</li>
         </ul>
   </div>
 </div>

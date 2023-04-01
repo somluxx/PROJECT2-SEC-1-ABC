@@ -176,7 +176,7 @@ const emits = defineEmits(['sendValue','openTask','goBacktoFirstpage'])
     </div>
     <div class="flex-col justify-center">
         <!-- <h1 class="text-9xl font-bold text-white flex justify-center">{{ box[0] }} : 00</h1> -->
-        <div class="flex text-center gap-x-6 text-6xl justify-center mt-10 text-white">
+        <div class="flex text-center gap-x-6 text-6xl justify-center mt-4 text-white">
             <p>Minutes</p>
             <span class="countdown font-mono text-6xl">
                 <span class="mt-1" :style="{ '--value': minutes }"></span>
@@ -202,20 +202,20 @@ const emits = defineEmits(['sendValue','openTask','goBacktoFirstpage'])
             <button type="submit" @click="$emit('sendValue',{min:custom_min,sec:custom_sec})"  class="border-2 border-red-300 p-2 w-12 rounded-xl">Set</button>
         </div>
 
-        <div class="w-full flex justify-center pt-16 mt-6">
+        <div class="w-full flex justify-center pt-10">
         <button class="bg-white rounded-xl w-64 h-32 text-red-400 text-6xl font-bold tracking-wider hover:bg-[#d3d2d6] duration-300" @click="countDownSystem">
             {{ startBtnText ? 'Pause' : 'Start' }} 
           </button>
         </div>
-        <div :class="showModal ? showModalStyle : collapseModalStyle" class="w-full flex mt-6 justify-center">
-            <div class="alert alert-info shadow-lg w-96 mt-8 bg-red-200">
+        <div :class="showModal ? showModalStyle : collapseModalStyle" class="flex mt-6 gap-x-3 justify-center">
+            <div class="alert alert-info shadow-lg w-96 bg-red-200">
                 <div class="text-black">
                     <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" class="stroke-current flex-shrink-0 w-6 h-6"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
                     <span class="text-black">Focus Session has Ended. Time to break! :3 </span>
                 </div>
             </div>
-                <button @click="resetTimer" class="border-2 border-white rounded-xl p-3 m-2 mt-10 justify-center text-center text-white">Restart</button>
-        </div>
+            <button @click="resetTimer" class="border-2 border-white rounded-xl p-2 m-2 mt-6 justify-center text-center text-white">Restart</button>
+          </div>
     </div>
 </div>
 

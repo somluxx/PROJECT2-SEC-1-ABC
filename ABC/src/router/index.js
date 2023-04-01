@@ -4,7 +4,6 @@ import TimeDisplayView from '../view/TimeDisplayView.vue'
 import NewTodoListView from '../view/NewTodoListView.vue'
 import CommentView from '../view/CommentView.vue'
 import NotFoundView from '../view/NotFoundView.vue'
-
 const router = createRouter({
     history: createWebHistory(),
     routes: [
