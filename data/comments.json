@@ -290,8 +290,33 @@
     {
       "chat": "last test",
       "id": 57
+    },
+    {
+      "chat": "dsasda",
+      "id": 58
+    },
+    {
+      "chat": "dasd",
+      "id": 59
     }
   ],
-  "notCompleteTasks": [],
-  "completedTasks": []
+  "notCompleteTasks": [
+    {
+      "task": "sad",
+      "checked": false,
+      "id": 1
+    }
+  ],
+  "completedTasks": [
+    {
+      "task": "dasdsad",
+      "checked": false,
+      "id": 2
+    },
+    {
+      "task": "dsada",
+      "checked": false,
+      "id": 3
+    }
+  ]
 }
