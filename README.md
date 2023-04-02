@@ -42,7 +42,7 @@
 
 # เเหล่งข้อมูลที่อ้างอิง
 ทางกลุ่มของเรานั้นได้เเรงบันดาลใจมาจาก pomofocus.io โดยใช้ลักษณะเว็บมาเป็นต้นเเบบ
-เสียงเตือนหมดเวลาเป็นส่วนหนึ่งของไฟล์เสียงจากระบบปฏิบัติการ Windows 11 (Microsoft)
+และเสียงเตือนหมดเวลาเป็นส่วนหนึ่งของไฟล์เสียงจากระบบปฏิบัติการ Windows 11 (Microsoft)
 
 # link video สำหรับฟีเจอร์ของ app
 https://www.youtube.com/watch?v=fQbpdMxgSKk&ab_channel=NATTAPHATNGARMPORNCHAI
