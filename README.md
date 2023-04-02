@@ -9,11 +9,11 @@
 
 # หน้าที่ความรับผิดชอบ
 
-1. 64130500007 จฏลาย์ จารุศิริกุล ทำหน้า Comment fetch-api defineprop defineEmits
-2. 64130500023 ณัฐภัทร งามพรชัย ทำเกี่ยวกับ Timer จัด CSS Component เเละ Debugcode
+1. 64130500007 จฏลาย์ จารุศิริกุล ทำหน้า Comment fetch-api define props , define emits
+2. 64130500023 ณัฐภัทร งามพรชัย ทำเกี่ยวกับ Timer CustomTime เเละจัด CSS ของ Component อื่นๆ เเละ Debugcode
 3. 64130500027 เทพาธิป ปัสบาล ทำ Vue-router Debugcode เเละ หน้า Todolist Debugcode
-4. 64130500050 ปุณณวิชญ์ การสามารถ ทำ TodoList เขียน Vue-router เเละ Debugcode
-5. 64130500036 ธเนศร เขียวบริบูรณ์ เขียนระบบ Sound ในหน้า Todolist เเละ Debugcode
+4. 64130500050 ปุณณวิชญ์ การสามารถ เป็น Leader ทำ TodoList เเบบเก่าเเละใหม่ fetch-api Vue-router เเละ Debugcode
+5. 64130500036 ธเนศร เขียวบริบูรณ์ เขียนระบบ Sound ในหน้า TodoList ทำ TodoList เเละ Debugcode
 
 # สัดส่วนการทำงาน
 
@@ -42,7 +42,6 @@
 
 # เเหล่งข้อมูลที่อ้างอิง
 ทางกลุ่มของเรานั้นได้เเรงบันดาลใจมาจาก pomofocus.io โดยใช้ลักษณะเว็บมาเป็นต้นเเบบ
-และเสียงเตือนหมดเวลาเป็นส่วนหนึ่งของไฟล์เสียงจากระบบปฏิบัติการ Windows 11 (Microsoft)
 
 # link video สำหรับฟีเจอร์ของ app
 https://www.youtube.com/watch?v=fQbpdMxgSKk&ab_channel=NATTAPHATNGARMPORNCHAI
