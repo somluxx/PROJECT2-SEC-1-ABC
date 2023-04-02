@@ -9,7 +9,7 @@
 
 # หน้าที่ความรับผิดชอบ
 
-1. 64130500007 จฏลาย์ จารุศิริกุล ทำหน้า Comment fetch-api defineprop defineemits
+1. 64130500007 จฏลาย์ จารุศิริกุล ทำหน้า Comment fetch-api defineprop defineEmits
 2. 64130500023 ณัฐภัทร งามพรชัย ทำเกี่ยวกับ Timer จัด CSS Component เเละ Debugcode
 3. 64130500027 เทพาธิป ปัสบาล ทำ Vue-router Debugcode เเละ หน้า Todolist Debugcode
 4. 64130500050 ปุณณวิชญ์ การสามารถ ทำ TodoList เขียน Vue-router เเละ Debugcode
