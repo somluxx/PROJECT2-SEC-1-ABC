@@ -1,7 +1,29 @@
-# PROJECT2-SEC-1-ABC
+# abc
 
-1. 64130500007 จฏลาย์ จารุศิริกุล
-2. 64130500023 ณัฐภัทร งามพรชัย
-3. 64130500027 เทพาธิป ปัสบาล
-4. 64130500036 ธเนศร เขียวบริบูรณ์
-5. 64130500050 ปุณณวิชญ์ การสามารถ
+This template should help get you started developing with Vue 3 in Vite.
+
+## Recommended IDE Setup
+
+[VSCode](https://code.visualstudio.com/) + [Volar](https://marketplace.visualstudio.com/items?itemName=Vue.volar) (and disable Vetur) + [TypeScript Vue Plugin (Volar)](https://marketplace.visualstudio.com/items?itemName=Vue.vscode-typescript-vue-plugin).
+
+## Customize configuration
+
+See [Vite Configuration Reference](https://vitejs.dev/config/).
+
+## Project Setup
+
+```sh
+npm install
+```
+
+### Compile and Hot-Reload for Development
+
+```sh
+npm run dev
+```
+
+### Compile and Minify for Production
+
+```sh
+npm run build
+```
