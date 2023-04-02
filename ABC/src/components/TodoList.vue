@@ -46,12 +46,6 @@
           </button>
       </div>    
     </div>
-
-
-
-    
-
-
     <div class="w-1/2 h-screen border-r flex items-center justify-center">
       <div class="flex-col items-center justify-center">
       <h1 class="text-white text-5xl mb-4">My To-Do Lists</h1>

@@ -254,14 +254,40 @@
     {
       "chat": "dd",
       "id": 48
+    },
+    {
+      "chat": "hey",
+      "id": 49
+    },
+    {
+      "chat": "gg",
+      "id": 50
+    },
+    {
+      "chat": "ggez",
+      "id": 51
+    },
+    {
+      "chat": "hey yo !",
+      "id": 52
+    },
+    {
+      "chat": "Hello Front-End",
+      "id": 53
+    },
+    {
+      "chat": "Hello Back-End",
+      "id": 54
+    },
+    {
+      "chat": "Welcome To INT203",
+      "id": 55
+    },
+    {
+      "chat": "ขอเต็ม 30 ครับจารย์ :3",
+      "id": 56
     }
   ],
   "notCompleteTasks": [],
-  "completedTasks": [
-    {
-      "task": "w",
-      "checked": false,
-      "id": 1
-    }
-  ]
+  "completedTasks": []
 }

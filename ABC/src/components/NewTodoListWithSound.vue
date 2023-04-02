@@ -1,8 +1,7 @@
-// New Todolist With Sound
 <script setup>
 import { ref, onMounted, computed, onBeforeMount } from 'vue'
-import HeroiconsSolidPlus from './HeroiconsSolidPlus.vue'
-import HeroiconsSolidMinus from './HeroiconsSolidMinus.vue'
+import HeroiconsSolidPlus from './icons/HeroiconsSolidPlus.vue'
+import HeroiconsSolidMinus from './icons/HeroiconsSolidMinus.vue'
 const notCompleteTasks = ref([]);
 const completedTasks = ref([]);
 const newTask = ref("");
@@ -42,7 +41,8 @@ const addTask = async () => {
 };
 
 const updateTask = async (task, checked) => {
-  const endpoint = checked ? "completedTasks" : "notCompleteTasks";
+   const endpoint = checked ? 'completedTasks' : 'notCompleteTasks';
+   console.log("TaskID"+task.id)
   const res = await fetch(`http://localhost:3000/${endpoint}/${task.id}`, {
     method: "PUT",
     headers: {
@@ -105,16 +105,16 @@ const toggleTask = async (task, section) => {
 };
 
 const sounds = ref([
-      { name: 'Bird', ref: 'song1', src: '/Bird.mp3', playing: false, volume: 50,audio: new Audio('/Bird.mp3')},
-      { name: 'Forest', ref: 'song2', src: '/Forest.mp3', playing: false, volume: 50,audio: new Audio('/Forest.mp3')  },
-      { name: 'Mall', ref: 'song3', src: '/Mall.mp3', playing: false, volume: 50, audio: new Audio('/Mall.mp3') },
-      { name: 'Piano', ref: 'song4', src: '/Piano.mp3', playing: false, volume: 50, audio: new Audio('/Piano.mp3') },
-      { name: 'Rain', ref: 'song5', src: '/Rain.mp3', playing: false, volume: 50, audio: new Audio('/Rain.mp3') },
+      { name: 'Bird', ref: 'song1', src: '/Sounds/Bird.mp3', playing: false, volume: 50,audio: new Audio('/Sounds/Bird.mp3')},
+      { name: 'Forest', ref: 'song2', src: '/Sounds/Forest.mp3', playing: false, volume: 50,audio: new Audio('/Sounds/Forest.mp3')  },
+      { name: 'Mall', ref: 'song3', src: '/Sounds/Mall.mp3', playing: false, volume: 50, audio: new Audio('/Sounds/Mall.mp3') },
+      { name: 'Piano', ref: 'song4', src: '/Sounds/Piano.mp3', playing: false, volume: 50, audio: new Audio('/Sounds/Piano.mp3') },
+      { name: 'Rain', ref: 'song5', src: '/Sounds/Rain.mp3', playing: false, volume: 50, audio: new Audio('/Sounds/Rain.mp3') },
 
-      { name: 'Relax', ref: 'song6', src: '/Relax.mp3', playing: false, volume: 50, audio: new Audio('/Relax.mp3') },
-      { name: 'Sea', ref: 'song7', src: '/Sea.mp3', playing: false, volume: 50, audio: new Audio('/Sea.mp3') },
-      { name: 'Traffic', ref: 'song8', src: '/Traffic.mp3', playing: false, volume: 50, audio: new Audio('/Traffic.mp3') },
-      { name: 'Water', ref: 'song9', src: '/Traffic.mp3', playing: false, volume: 50, audio: new Audio('/Water.mp3') }
+      { name: 'Relax', ref: 'song6', src: '/Sounds/Relax.mp3', playing: false, volume: 50, audio: new Audio('/Sounds/Relax.mp3') },
+      { name: 'Sea', ref: 'song7', src: '/Sounds/Sea.mp3', playing: false, volume: 50, audio: new Audio('/Sounds/Sea.mp3') },
+      { name: 'Traffic', ref: 'song8', src: '/Sounds/Traffic.mp3', playing: false, volume: 50, audio: new Audio('/Sounds/Traffic.mp3') },
+      { name: 'Water', ref: 'song9', src: '/Sounds/Traffic.mp3', playing: false, volume: 50, audio: new Audio('/Sounds/Water.mp3') }
     ]);
 
     const playSound = (sound) => {
