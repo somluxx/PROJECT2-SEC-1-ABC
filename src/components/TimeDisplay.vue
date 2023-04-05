@@ -43,8 +43,8 @@ let intervalId = null
 //Overall Countdown Timer System Function
 const countDownSystem = () => {
   startBtnText.value = !startBtnText.value; // set text button to opposite boolean to display specify text
-  console.log(props.minutes)
-  console.log(props.seconds)
+  // console.log(props.minutes)
+  // console.log(props.seconds)
   if (startBtnText.value) { // startBtn === true
       intervalId = setInterval(() => { //start IntervalTime (1 second each process)
       if (pomodoroDefaultTimer.value > 0) {
@@ -82,11 +82,10 @@ const resetTimer = () => {
   startBtnText.value = false // make the startbtn text to 'Start' again instead of 'Pause'
   audio.pause() // pause an audio
 };
-resetTimer(); // execute resetTimer function
 
 // Best
 const tomato = 'images/tomatoman.png'
-const emits = defineEmits(['sendValue','openTask','goBacktoFirstpage'])
+const emits = defineEmits(['sendValue'])
 
 </script>
  

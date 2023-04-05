@@ -16,7 +16,8 @@ import {ref, onBeforeMount, onMounted} from 'vue'
 
 const comments = ref([])
 const fiveComments = ref([])
-const comment = ref()
+
+
 
 
 onBeforeMount(async() => {
@@ -33,10 +34,10 @@ const commentsaddtoFiveComments = () => {
     for(const loop in comments.value){
       if(fiveComments.value[loop] !== comments.value[loop]){
         fiveComments.value.push(comments.value[loop])
+        }
       }
     }
   }
-}
 
 
 const textChat = ref()
@@ -91,7 +92,7 @@ const sendToBackEnd = async(text) => {
           </div>
 
           <div class="input-form flex flex-col justify-start mt-8 gap-y-5 px-2 sm:px-44 relative">
-                <input placeholder="Write Comment Here ..." type="text" name="comment" id="comment" class="pl-3 rounded-xl w-full h-10 focus:border-b-4 border-blue-400 duration-200 bg-white text-black font-bold" v-model="textChat" ref="comment">
+                <input placeholder="Write Comment Here ..." type="text" name="comment" id="comment" class="pl-3 rounded-xl w-full h-10 focus:border-b-4 border-blue-400 duration-200 bg-white text-black font-bold" v-model="textChat" >
                 <div class="flex flex-row items-center justify-between">
                   <button class="btn btn-active btn-error w-20 mt-2 mb-10" @click="sendTextChat(textChat)">Submit</button>
                   <span class="ml-28 top-16 absolute mt-2 text-red-600 font-bold sm:block" v-show="showError">กรุณากรอกข้อมูล...</span>

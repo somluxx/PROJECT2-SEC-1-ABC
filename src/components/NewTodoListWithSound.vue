@@ -5,19 +5,20 @@ import HeroiconsSolidMinus from './icons/HeroiconsSolidMinus.vue'
 const notCompleteTasks = ref([]);
 const completedTasks = ref([]);
 const newTask = ref("");
-const playFalse = 'bg-green-500 text-black hover:bg-green-600 duration-200' 
-const playTrue = 'bg-red-500 text-white hover:bg-red-600 duration-200'
+// const playFalse = 'bg-green-500 text-black hover:bg-green-600 duration-200' 
+// const playTrue = 'bg-red-500 text-white hover:bg-red-600 duration-200'
 
 const fetchTasks = async () => {
   const notCompleteRes = await fetch("http://localhost:3000/notCompleteTasks");
   const completedRes = await fetch("http://localhost:3000/completedTasks");
 
+
   if (notCompleteRes.ok && completedRes.ok) {
     const notCompleteData = await notCompleteRes.json();
-    notCompleteTasks.value = notCompleteData.filter(task => !task.checked);
-
+    notCompleteTasks.value = notCompleteData
+    
     const completedData = await completedRes.json();
-    completedTasks.value = completedData.filter(task => !task.checked);
+    completedTasks.value = completedData
   }
 };
 onBeforeMount(fetchTasks);
@@ -25,6 +26,7 @@ onBeforeMount(fetchTasks);
 const addTask = async () => {
   if (newTask.value.trim() !== "") {
     const task = { task: newTask.value.trim(), checked: false };
+    console.log(task)
     const res = await fetch("http://localhost:3000/notCompleteTasks", {
       method: "POST",
       headers: {
@@ -40,67 +42,36 @@ const addTask = async () => {
   }
 };
 
-const updateTask = async (task, checked) => {
-   const endpoint = checked ? 'completedTasks' : 'notCompleteTasks';
-   console.log("TaskID"+task.id)
-  const res = await fetch(`http://localhost:3000/${endpoint}/${task.id}`, {
-    method: "PUT",
-    headers: {
-      "Content-Type": "application/json",
-    },
-    body: JSON.stringify({ ...task, checked }),
-  });
-  if (res.ok && checked) {
-    const completedTask = { ...task, checked };
-    const completedRes = await fetch("http://localhost:3000/completedTasks", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify(completedTask),
+const toggleTask = async (task, section) => {
+  if (section === "Not Completed" && task.checked) { // ส่วนของ Section Not Complated
+    notCompleteTasks.value.splice(notCompleteTasks.value.indexOf(task), 1); // removing an incomplete task from an notCompleteTasks array that is tracking a list of incomplete tasks.
+    const completedTask = { ...task, checked: false }; // รวบรวม Task ทั้งหมดที่ checked เป็น false ใส่เข้าไปในตัวแปร completedTask
+    // console.log(task)
+    completedTasks.value.push(completedTask); // Add Task จากตัวแปร completedTask ข้างบน เข้าไปใน Array completeTasks
+    
+    await fetch(`http://localhost:3000/notCompleteTasks/${task.id}`, {
+      method: "DELETE"
+    }); // Method Delete ลบจาก Not completed เพื่อเตรียมย้ายไปยัง Completed เมื่อกด checkbox
+    await updateTask(task, false);
+    
+  } else if (section === "Completed" && task.checked) {  // ส่วนของ Section Complated
+    completedTasks.value.splice(completedTasks.value.indexOf(task), 1); // ลบตัว Task ในส่วนของ Completed ออก
+    
+    await fetch(`http://localhost:3000/completedTasks/${task.id}`, {
+      method: "DELETE" // ลบจาก Completed ออกจาก JSON File ถาวร เมื่อกด checkbox
     });
   }
 };
 
-const toggleTask = async (task, section) => {
-  if (section === "Not Completed" && task.checked) {
-    notCompleteTasks.value.splice(notCompleteTasks.value.indexOf(task), 1); // removing an incomplete task from an notCompleteTasks array that is tracking a list of incomplete tasks.
-
-    const completedTask = { ...task, checked: false };
-    completedTasks.value.push(completedTask);
-
-    const res = await fetch("http://localhost:3000/completedTasks", {
+const updateTask = async (task, checked) => {
+  if (checked === false) {
+    await fetch("http://localhost:3000/completedTasks", {
       method: "POST",
       headers: {
-        "Content-Type": "application/json",
+        "Content-Type": "application/json"
       },
-      body: JSON.stringify(completedTask),
+      body: JSON.stringify(task)
     });
-    const deleteRes = await fetch(`http://localhost:3000/notCompleteTasks/${task.id}`, {
-      method: "DELETE",
-    });
-    await updateTask(task, false);
-  } else if (section === "Completed" && task.checked) {
-    completedTasks.value.splice(completedTasks.value.indexOf(task), 1);
-
-    const deleteRes = await fetch(`http://localhost:3000/completedTasks/${task.id}`, {
-      method: "DELETE",
-    });
-    
-  } else if (section === "Completed" && !task.checked) {
-    completedTasks.value.splice(completedTasks.value.indexOf(task), 1);
-
-    const notCompleteTask = { ...task, checked: false };
-    notCompleteTasks.value.push(notCompleteTask);
-
-    const res = await fetch("http://localhost:3000/notCompleteTasks", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify(notCompleteTask),
-    });
-    await updateTask(task, false);
   }
 };
 
@@ -152,7 +123,7 @@ const sounds = ref([
         <input type="text" id="task" class="border rounded-lg px-3 py-2 w-full" v-model="newTask">
       </div>
       <div class="mb-4">
-        <button class="bg-black hover:bg-red-700 duration-200 text-white font-bold py-2 px-4 rounded" @click="addTask">Add</button>
+        <button class="bg-black hover:bg-red-700 duration-200 text-white font-bold py-2 px-4 rounded" @click="addTask" @keydown.enter="addTask">Add</button>
       </div>
       <div>
         <h2 class="text-xl font-bold mb-2">Not Completed:</h2>
@@ -189,7 +160,7 @@ const sounds = ref([
            <button class="border-2 border-red-200 rounded-xl p-0.5"><HeroiconsSolidPlus/></button> 
           </button>
         </div>
-        <button class="bg-red-500 text-white font-bold text-lg p-2 mt-4 rounded-lg shadow-md focus:outline-none hover:bg-red-700" :class="sound.playing? playTrue:playFalse" @click="playSound(sound)">
+        <button class="bg-red-500 text-white font-bold text-lg p-2 mt-4 rounded-lg shadow-md focus:outline-none hover:bg-red-700" @click="playSound(sound)">
           {{ sound.playing ? 'Stop' : 'Play' }}
         </button>
       </div>
