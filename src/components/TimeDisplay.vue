@@ -31,7 +31,6 @@ const defaultPomodoroTime = props.minutes * 60 + props.seconds; // Duplicate def
 // computed คือจัดเก็บค่าที่เปลี่ยนเเปลง 
 // คำนวณออกมาเป็น นาที 
 const minutes = computed(() => {
-  // console.log(pomodoroDefaultTimer.value)
   return Math.floor(pomodoroDefaultTimer.value / 60); // Calculate Minutes (Use Integer)
 });
 // คำนวณออกมาเป็นวินาที 
@@ -43,8 +42,6 @@ let intervalId = null
 //Overall Countdown Timer System Function
 const countDownSystem = () => {
   startBtnText.value = !startBtnText.value; // set text button to opposite boolean to display specify text
-  // console.log(props.minutes)
-  // console.log(props.seconds)
   if (startBtnText.value) { // startBtn === true
       intervalId = setInterval(() => { //start IntervalTime (1 second each process)
       if (pomodoroDefaultTimer.value > 0) {
@@ -62,7 +59,6 @@ const countDownSystem = () => {
     clearInterval(intervalId); // else --> clearInterval
   }
 };
-// console.log(pomodoroDefaultTimer.value)
 // ใช้สำหรับในการเปลี่ยนหากมีการส่ง defineProps มาจาก Components อื่นมาใหม่
 watch(() => props.minutes, (newValue) => {
   // Use watcher to tracking the minutes changes in props value to update to Parent Component
@@ -83,7 +79,6 @@ const resetTimer = () => {
   audio.pause() // pause an audio
 };
 
-// Best
 const tomato = 'images/tomatoman.png'
 const emits = defineEmits(['sendValue'])
 
@@ -94,7 +89,6 @@ const emits = defineEmits(['sendValue'])
 <div class="bg w-full h-4/5 p-2">
     <div class="w-full flex pb-5">
         <div class="w-1/2">
-        <!-- <img :src="tomato" class="w-20"/> -->
         <div class="flex justify-start pt-2">
                 <RouterLink to="/"><button class="w-48 h-12 bg-white rounded-3xl text-4xl tracking-wider">Back</button></RouterLink>
             </div>
@@ -106,7 +100,6 @@ const emits = defineEmits(['sendValue'])
         </div>
     </div>
     <div class="flex-col justify-center">
-        <!-- <h1 class="text-9xl font-bold text-white flex justify-center">{{ box[0] }} : 00</h1> -->
         <div class="flex text-center gap-x-6 text-6xl justify-center mt-4 text-white">
             <p>Minutes</p>
             <span class="countdown font-mono text-6xl">

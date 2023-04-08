@@ -5,8 +5,6 @@ import HeroiconsSolidMinus from './icons/HeroiconsSolidMinus.vue'
 const notCompleteTasks = ref([]);
 const completedTasks = ref([]);
 const newTask = ref("");
-// const playFalse = 'bg-green-500 text-black hover:bg-green-600 duration-200' 
-// const playTrue = 'bg-red-500 text-white hover:bg-red-600 duration-200'
 
 const fetchTasks = async () => {
   const notCompleteRes = await fetch("http://localhost:3000/notCompleteTasks");
@@ -26,7 +24,6 @@ onBeforeMount(fetchTasks);
 const addTask = async () => {
   if (newTask.value.trim() !== "") {
     const task = { task: newTask.value.trim(), checked: false };
-    console.log(task)
     const res = await fetch("http://localhost:3000/notCompleteTasks", {
       method: "POST",
       headers: {
@@ -46,7 +43,6 @@ const toggleTask = async (task, section) => {
   if (section === "Not Completed" && task.checked) { // ส่วนของ Section Not Complated
     notCompleteTasks.value.splice(notCompleteTasks.value.indexOf(task), 1); // removing an incomplete task from an notCompleteTasks array that is tracking a list of incomplete tasks.
     const completedTask = { ...task, checked: false }; // รวบรวม Task ทั้งหมดที่ checked เป็น false ใส่เข้าไปในตัวแปร completedTask
-    // console.log(task)
     completedTasks.value.push(completedTask); // Add Task จากตัวแปร completedTask ข้างบน เข้าไปใน Array completeTasks
     
     await fetch(`http://localhost:3000/notCompleteTasks/${task.id}`, {

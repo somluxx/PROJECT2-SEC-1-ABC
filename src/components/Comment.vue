@@ -1,6 +1,5 @@
-// Comment
 <script setup >
-import {ref, onBeforeMount, onMounted} from 'vue'
+import {ref, onBeforeMount} from 'vue'
   const getComments = async() => {
   const res = await fetch('http://localhost:3000/comments')
   try{
@@ -13,12 +12,8 @@ import {ref, onBeforeMount, onMounted} from 'vue'
   }
 }
 
-
 const comments = ref([])
 const fiveComments = ref([])
-
-
-
 
 onBeforeMount(async() => {
   comments.value = await getComments()
